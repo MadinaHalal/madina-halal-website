@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madina Halal Supermarket</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Cairo', sans-serif; background-color: #fdfdf7; margin: 0; padding: 0; color: #333; }
+    .container { max-width: 900px; margin: auto; padding: 20px; }
+
+    /* Header */
+    .header { text-align: center; margin-bottom: 30px; }
+    .header img { width: 130px; height: 130px; border-radius: 50%; border: 3px solid #4CAF50; padding: 5px; }
+    .header h1 { font-size: 38px; margin: 10px 0; color: #2e7d32; }
+    .header p { font-size: 20px; color: #555; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .header p span { font-size: 24px; color: #FFD700; }
+
+    /* Dropdown */
+    .dropdown { margin: 20px 0; text-align: center; }
+    select { padding: 10px 15px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; }
+
+    /* Cards */
+    .card { background: #fff; padding: 25px; margin-bottom: 25px; border-radius: 20px; box-shadow: 0 5px 12px rgba(0,0,0,0.08); }
+    h2 { font-size: 26px; margin-bottom: 12px; color: #2e7d32; }
+    ul { list-style: disc; padding-left: 20px; }
+
+    /* Buttons */
+    a.button { display: inline-block; background-color: #4CAF50; color: #fff; padding: 12px 24px; border-radius: 12px; text-decoration: none; margin-top: 10px; font-weight: 600; transition: 0.3s; }
+    a.button:hover { background-color: #388e3c; }
+
+    /* Contact */
+    .contact div { margin: 6px 0; display: flex; align-items: center; gap: 10px; font-size: 18px; }
+
+    /* Footer */
+    footer { text-align: center; font-size: 14px; color: #888; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <img src="logo.png" alt="Madina Halal Supermarket Logo">
+      <h1>Madina Halal Supermarket</h1>
+      <p><span>🌙</span> Fresh Halal Meat • Desi Groceries • Trusted by the Community</p>
+    </div>
+
+    <!-- Product Categories Dropdown -->
+    <div class="dropdown">
+      <label for="categories">Browse Product Categories: </label>
+      <select id="categories" onchange="showCategory(this.value)">
+        <option value="">-- Select Category --</option>
+        <option value="freshMeat">Fresh Halal Meat</option>
+        <option value="halalFish">Halal Desi Fish</option>
+        <option value="spices">Spices</option>
+        <option value="snacks">Snacks</option>
+        <option value="riceFlour">Rice & Flour</option>
+        <option value="halalEssentials">Halal Essentials</option>
+        <option value="islamicAccessories">Islamic Accessories</option>
+      </select>
+    </div>
+
+    <!-- About -->
+    <div class="card">
+      <h2>About Us</h2>
+      <p>Welcome to Madina Halal Supermarket! We offer fresh halal beef, goat, lamb, chicken, and a wide selection of desi groceries, spices, and Islamic essentials. Your trusted neighborhood halal store.</p>
+    </div>
+
+    <!-- Products -->
+    <div class="card" id="productDisplay">
+      <h2>Our Products</h2>
+      <ul id="productList">
+        <li>Fresh Halal Meat (Beef, Goat, Lamb, Chicken)</li>
+        <li>Fresh & Frozen Fish</li>
+        <li>Desi & International Groceries</li>
+        <li>Spices, Attar, Oils & Islamic Items</li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="card contact">
+      <h2>Visit Us</h2>
+      <div>📍 2543 Bells Ferry Road Suite 850, Marietta, GA 30066</div>
+      <div>📞 +1 (470) 308-5377</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=2543+Bells+Ferry+Road+Suite+850+Marietta+GA+30066" target="_blank" class="button">Get Directions on Google Maps</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>© 2026 Madina Halal Supermarket. All rights reserved.</footer>
+  </div>
+
+  <script>
+    const products = {
+      freshMeat: ['Beef', 'Goat', 'Lamb', 'Chicken'],
+      halalFish: ['Rohu', 'Hilsa', 'Mrigal', 'Coral'],
+      spices: ['Turmeric', 'Cumin', 'Coriander', 'Garam Masala'],
+      snacks: ['Namkeen', 'Sweets', 'Chips', 'Cookies'],
+      riceFlour: ['Basmati Rice', 'Brown Rice', 'Wheat Flour', 'Maida'],
+      halalEssentials: ['Milk', 'Eggs', 'Paneer', 'Cooking Oil'],
+      islamicAccessories: ['Prayer Mats', 'Tupi', 'Tasbeeh', 'Attar']
+    };
+
+    function showCategory(category) {
+      const list = document.getElementById('productList');
+      list.innerHTML = '';
+      if(products[category]) {
+        products[category].forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          list.appendChild(li);
+        });
+      } else {
+        list.innerHTML = `
+          <li>Fresh Halal Meat (Beef, Goat, Lamb, Chicken)</li>
+          <li>Fresh & Frozen Fish</li>
+          <li>Desi & International Groceries</li>
+          <li>Spices, Attar, Oils & Islamic Items</li>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
